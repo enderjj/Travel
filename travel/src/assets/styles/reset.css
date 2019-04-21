@@ -83,6 +83,11 @@
  html, body {
      width: 100%;
  }
+
+ html {
+   /* 设置 html 的 font-size 用于方便使用 rem */
+   font-size: 50px;
+ }
  
  body {
      -webkit-text-size-adjust: none;

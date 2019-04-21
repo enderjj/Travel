@@ -3,8 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './assets/styles/reset.css' // 初始化样式
-import './assets/styles/border.css' // 解决移动端 border 1px 问题
+import 'styles/reset.css' // 初始化样式
+import 'styles/border.css' // 解决移动端 border 1px 问题
+import 'styles/iconfont.css' // 引入图标样式
 import fastClick from 'fastclick' // 解决移动端点击事件的 300 ms 延迟问题
 
 Vue.config.productionTip = false
