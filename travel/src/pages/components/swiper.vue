@@ -1,3 +1,4 @@
+// 轮播图组件
 <template>
   <div class="wrapper">
     <swiper :options="swiperOption">
@@ -17,8 +18,8 @@ export default {
   data () {
     return {
       swiperOption: {
-        pagination: '.swiper-pagination',
-        loop: true
+        pagination: '.swiper-pagination', // 轮播图分页设置
+        loop: true // 设置轮播图是否循环播放
       },
       swiperList: [
         {

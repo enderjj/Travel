@@ -1,3 +1,4 @@
+// 顶部搜索栏组件
 <template>
   <div class="header">
     <div class="header-left">
