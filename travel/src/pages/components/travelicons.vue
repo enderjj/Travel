@@ -95,11 +95,8 @@ export default {
 <style lang="stylus" scoped>
 @import '~styles/variable.styl';
 
-  .icons >>> .swiper-slide swiper-slide-active
-    padding-bottom: 40px
-  // .icons >>> .swiper-pagination
-  //   padding-bottom: -20px
-  //   font-size: 8px
+  .icons >>> .swiper-container
+    padding-bottom: 24px
   .icons
     width: 100%
     overflow: hidden
