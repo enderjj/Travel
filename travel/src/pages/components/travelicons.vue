@@ -94,6 +94,7 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~styles/variable.styl';
+@import '~styles/mixin.styl';
 
   .icons >>> .swiper-container
     padding-bottom: 24px
@@ -129,4 +130,5 @@ export default {
         text-align: center
         font-size: .28rem
         color: $darkTextColor
+        ellipsis()
 </style>
