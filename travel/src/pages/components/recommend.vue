@@ -3,7 +3,7 @@
   <div>
     <div class="title">热销榜单</div>
     <ul>
-      <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item of rlist" :key="item.id">
         <img class="item-img" :src="item.imgUrl">
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -19,29 +19,8 @@
 <script>
 export default {
   name: 'HomeRecommend', // 组件名称
-  data () {
-    return {
-      recommendList: [
-        {
-          id: '0001',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1904/a2/a23ae48aac0c0ab2a3.water.jpg_200x200_38cef490.jpg',
-          title: '西溪国家湿地公园',
-          desc: '浪漫的湿地公园，风景美不胜收'
-        },
-        {
-          id: '0002',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1904/a2/a23ae48aac0c0ab2a3.water.jpg_200x200_38cef490.jpg',
-          title: '西溪国家湿地公园',
-          desc: '浪漫的湿地公园，风景美不胜收'
-        },
-        {
-          id: '0003',
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1904/a2/a23ae48aac0c0ab2a3.water.jpg_200x200_38cef490.jpg',
-          title: '西溪国家湿地公园',
-          desc: '浪漫的湿地公园，风景美不胜收'
-        }
-      ]
-    }
+  props: {
+    rlist: Array
   }
 }
 </script>
