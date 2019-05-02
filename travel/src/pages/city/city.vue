@@ -1,18 +1,23 @@
+// 城市页面组件
 <template>
-  <city-header></city-header>
+  <div>
+    <city-header></city-header>
+    <city-search></city-search>
+  </div>
 </template>
 
 <script>
 import CityHeader from './components/header'
+import CitySearch from './components/search'
 
 export default {
   name: 'City',
   components: {
-    CityHeader
+    CityHeader,
+    CitySearch
   }
 }
 </script>
 
-<style lang="stylus" scoped>
-
+<style>
 </style>

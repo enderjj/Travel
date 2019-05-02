@@ -1,3 +1,4 @@
+// 城市页面顶部组件
 <template>
   <div class="header">
     城市选择
