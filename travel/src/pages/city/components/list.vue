@@ -6,14 +6,19 @@
         <p class="title border-topbottom">当前城市</p>
         <div class="city-list">
           <div class="city-wrapper">
-            <div class="city">北京</div>
+            <div class="city">{{this.$store.state.city}}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <p class="title  border-topbottom">热门城市</p>
         <div class="city-list">
-          <div class="city-wrapper" v-for="item of hotCities" :key="item.id">
+          <div
+            class="city-wrapper"
+            v-for="item of hotCities"
+            :key="item.id"
+            @click="handleCityClick(item.name)"
+          >
             <div class="city">{{item.name}}</div>
           </div>
         </div>
@@ -22,7 +27,12 @@
         <li v-for="(items,key) of cities" :key="key" :ref="key">
           <p class="title  border-topbottom">{{key}}</p>
           <ul class="item-list">
-            <li class="city-item border-bottom" v-for="cityItem of items" :key="cityItem.id">{{cityItem.name}}</li>
+            <li
+              class="city-item border-bottom"
+              v-for="cityItem of items"
+              :key="cityItem.id"
+              @click="handleCityClick(cityItem.name)"
+            >{{cityItem.name}}</li>
           </ul>
         </li>
       </ul>
@@ -48,6 +58,13 @@ export default {
     letter () { // 监听 letter 属性的变化
       const element = this.$refs[this.letter][0]
       this.scroll.scrollToElement(element)
+    }
+  },
+  methods: {
+    handleCityClick (city) {
+      // this.$store.dispatch('changeCity', city) // 触发 vuex 中的 actions 事件
+      this.$store.commit('changeCity', city) // 触发 vuex 中的 mutations 事件
+      this.$router.push('/') // 选择城市后跳转到首页，改变当前路由为首页路由
     }
   }
 }

@@ -13,6 +13,7 @@
           class="search-item border-bottom"
           v-for="(item, index) of result"
           :key="index"
+          @click="handleCityClick(item)"
         >{{item}}</li>
         <li class="search-item border-bottom" v-show="hasNoResult">未搜索到相关数据</li>
       </ul>
@@ -67,6 +68,13 @@ export default {
         }
         this.result = filter
       }, 100)
+    }
+  },
+  methods: {
+    handleCityClick (city) {
+      // this.$store.dispatch('changeCity', city) // 触发 vuex 中的 actions 事件
+      this.$store.commit('changeCity', city) // 触发 vuex 中的 mutations 事件
+      this.$router.push('/') // 选择城市后跳转到首页，改变当前路由为首页路由
     }
   }
 }
