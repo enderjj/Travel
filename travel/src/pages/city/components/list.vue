@@ -6,7 +6,7 @@
         <p class="title border-topbottom">当前城市</p>
         <div class="city-list">
           <div class="city-wrapper">
-            <div class="city">{{this.$store.state.city}}</div>
+            <div class="city">{{city}}</div>
           </div>
         </div>
       </div>
@@ -42,6 +42,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex' // vuex 对应的 map 属性可以将 vuex 中的数据映射到当前组件
 
 export default {
   name: 'CityList',
@@ -54,6 +55,9 @@ export default {
   mounted () {
     this.scroll = new BScroll(this.$refs.list)
   },
+  computed: {
+    ...mapState(['city'])
+  },
   watch: {
     letter () { // 监听 letter 属性的变化
       const element = this.$refs[this.letter][0]
@@ -63,9 +67,11 @@ export default {
   methods: {
     handleCityClick (city) {
       // this.$store.dispatch('changeCity', city) // 触发 vuex 中的 actions 事件
-      this.$store.commit('changeCity', city) // 触发 vuex 中的 mutations 事件
+      // this.$store.commit('changeCity', city) // 触发 vuex 中的 mutations 事件
+      this.changeCity(city) // 直接调用 map 过来的方法
       this.$router.push('/') // 选择城市后跳转到首页，改变当前路由为首页路由
-    }
+    },
+    ...mapMutations(['changeCity'])
   }
 }
 </script>

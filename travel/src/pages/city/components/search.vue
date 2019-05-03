@@ -23,6 +23,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapMutations } from 'vuex' // vuex 对应的 map 属性可以将 vuex 中的数据映射到当前组件
 
 export default {
   name: 'CitySearch',
@@ -73,9 +74,11 @@ export default {
   methods: {
     handleCityClick (city) {
       // this.$store.dispatch('changeCity', city) // 触发 vuex 中的 actions 事件
-      this.$store.commit('changeCity', city) // 触发 vuex 中的 mutations 事件
+      // this.$store.commit('changeCity', city) // 触发 vuex 中的 mutations 事件
+      this.changeCity(city) // 直接调用 map 过来的方法
       this.$router.push('/') // 选择城市后跳转到首页，改变当前路由为首页路由
-    }
+    },
+    ...mapMutations(['changeCity'])
   }
 }
 </script>

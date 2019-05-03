@@ -11,7 +11,7 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
-        {{this.$store.state.city}}
+        {{currentCity}}
         <span class="iconfont arrow-icon">&#xe64a;</span>
       </div>
     </router-link>
@@ -19,8 +19,15 @@
 </template>
 
 <script>
+import { mapState } from 'vuex' // vuex 对应的 map 属性可以将 vuex 中的数据映射到当前组件
+
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
+  }
 }
 </script>
 
@@ -52,7 +59,8 @@ export default {
         font-size: .2rem
     .header-right
       float: right
-      width: 1.24rem
+      min-width: 1.04rem // 防止选择城市名称太长时，样式不正确
+      padding: 0 .1rem
       font-size: .28rem
       text-align: center
       color: #fff
