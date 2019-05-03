@@ -18,16 +18,14 @@
           </div>
         </div>
       </div>
-      <div class="area">
-        <ul>
-          <li v-for="(items,key) of cities" :key="key">
-            <p class="title  border-topbottom">{{key}}</p>
-            <ul class="item-list">
-              <li class="city-item border-bottom" v-for="cityItem of items" :key="cityItem.id">{{cityItem.name}}</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+      <ul class="area">
+        <li v-for="(items,key) of cities" :key="key" :ref="key">
+          <p class="title  border-topbottom">{{key}}</p>
+          <ul class="item-list">
+            <li class="city-item border-bottom" v-for="cityItem of items" :key="cityItem.id">{{cityItem.name}}</li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -39,11 +37,18 @@ export default {
   name: 'CityList',
   props: {
     hotCities: Array,
-    cities: Object
+    cities: Object,
+    letter: String // 需要跳转到的城市列表所在的字母
   },
   // 在 mounted 生命周期中使用 scroll 功能
   mounted () {
     this.scroll = new BScroll(this.$refs.list)
+  },
+  watch: {
+    letter () { // 监听 letter 属性的变化
+      const element = this.$refs[this.letter][0]
+      this.scroll.scrollToElement(element)
+    }
   }
 }
 </script>

@@ -3,8 +3,8 @@
   <div>
     <city-header></city-header>
     <city-search></city-search>
-    <city-list :hotCities="hotCities" :cities="cities"></city-list>
-    <city-alphabet :cities="cities"></city-alphabet>
+    <city-list :hotCities="hotCities" :cities="cities" :letter="letter"></city-list>
+    <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet>
   </div>
 </template>
 
@@ -21,7 +21,8 @@ export default {
   data () {
     return {
       hotCities: [], // 热门城市
-      cities: {} // 按字母表顺序排列的城市列表
+      cities: {}, // 按字母表顺序排列的城市列表
+      letter: '' // 当前列表所在的字母
     }
   },
   components: {
@@ -44,6 +45,9 @@ export default {
         this.hotCities = data.hotCities
         this.cities = data.cities
       }
+    },
+    handleLetterChange (letter) {
+      this.letter = letter
     }
   },
   // mounted 时利用 ajax 获取后端数据
