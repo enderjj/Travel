@@ -3,13 +3,13 @@
   <div>
     <div class="title">热销榜单</div>
     <ul>
-      <li class="item border-bottom" v-for="item of rlist" :key="item.id">
+      <li class="item after-border-1px" v-for="item of rlist" :key="item.id">
         <img class="item-img" :src="item.imgUrl">
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
           <p class="item-desc">{{item.desc}}</p>
-          <input class="item-button" type="button" value="查看详情">
-          <!-- <button class="item-button">查看详情</button> -->
+          <!-- <input class="item-button" type="button" value="查看详情"> -->
+          <button class="item-button">查看详情</button>
         </div>
       </li>
     </ul>
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import "~styles/mixin.styl";
+@import "~styles/mixin.styl"
 
   .title
     // margin-top: .2rem
@@ -38,6 +38,7 @@ export default {
     display: flex
     overflow: hidden
     height: 1.9rem
+    after-border-1px()
     .item-img
       width: 1.6rem
       height: 1.6rem
@@ -57,10 +58,13 @@ export default {
         color: #ccc
         ellipsis()
       .item-button
+        display: block
         line-height: .44rem
         background: #ff9300
         border-radius: .06rem
         padding: 0 .1rem
         color: #fff
-        font-size: .26rem
+        font-size: .24rem
+        border: none
+        margin-top: .14rem
 </style>

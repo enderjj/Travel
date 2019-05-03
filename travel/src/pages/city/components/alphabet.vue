@@ -1,19 +1,16 @@
 // 城市选择页面右侧字母列表组件
 <template>
   <ul class="list">
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
-    <li class="item">A</li>
+    <li class="item" v-for="(alpha,key) of cities" :key="key">{{key}}</li>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'CityAlphabet'
+  name: 'CityAlphabet',
+  props: {
+    cities: Object
+  }
 }
 </script>
 
@@ -31,7 +28,7 @@ export default {
     width: .4rem
     .item
       // height: .4rem
-      line-height: .4rem
+      line-height: .32rem
       font-size: .26rem
       text-align: center
       color: $bgcolor

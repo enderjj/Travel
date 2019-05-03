@@ -3,61 +3,31 @@
   <div class="list" ref="list">
     <div>
       <div class="area">
-      <div class="title border-topbottom">当前城市</div>
-      <div class="city-list">
-        <div class="city-wrapper">
-          <div class="city">北京</div>
+        <p class="title border-topbottom">当前城市</p>
+        <div class="city-list">
+          <div class="city-wrapper">
+            <div class="city">北京</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="area">
-      <div class="title  border-topbottom">热门城市</div>
-      <div class="city-list">
-        <div class="city-wrapper">
-          <div class="city">北京</div>
-        </div>
-         <div class="city-wrapper">
-          <div class="city">北京</div>
-        </div>
-        <div class="city-wrapper">
-          <div class="city">北京</div>
-        </div>
-        <div class="city-wrapper">
-          <div class="city">北京</div>
-        </div><div class="city-wrapper">
-          <div class="city">北京</div>
+      <div class="area">
+        <p class="title  border-topbottom">热门城市</p>
+        <div class="city-list">
+          <div class="city-wrapper" v-for="item of hotCities" :key="item.id">
+            <div class="city">{{item.name}}</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="area">
-      <div class="title  border-topbottom">A</div>
-      <div class="item-list">
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
+      <div class="area">
+        <ul>
+          <li v-for="(items,key) of cities" :key="key">
+            <p class="title  border-topbottom">{{key}}</p>
+            <ul class="item-list">
+              <li class="city-item border-bottom" v-for="cityItem of items" :key="cityItem.id">{{cityItem.name}}</li>
+            </ul>
+          </li>
+        </ul>
       </div>
-      <div class="title  border-topbottom">A</div>
-      <div class="item-list">
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-      </div>
-      <div class="title  border-topbottom">A</div>
-      <div class="item-list">
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-        <div class="city-item border-bottom">阿拉尔</div>
-      </div>
-    </div>
     </div>
   </div>
 </template>
@@ -67,6 +37,10 @@ import BScroll from 'better-scroll'
 
 export default {
   name: 'CityList',
+  props: {
+    hotCities: Array,
+    cities: Object
+  },
   // 在 mounted 生命周期中使用 scroll 功能
   mounted () {
     this.scroll = new BScroll(this.$refs.list)
@@ -107,8 +81,8 @@ export default {
           float: left
           width: 33.33%
           .city
-            height: .4rem
-            line-height: .4rem
+            height: .44rem
+            line-height: .44rem
             margin: .1rem
             paddind: .1rem 0
             border: .02rem solid #ccc
