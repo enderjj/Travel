@@ -21,7 +21,9 @@ export default {
   },
   data () {
     return {
-      touchMove: false // 标识是否进行了触摸移动事件
+      touchMove: false, // 标识是否进行了触摸移动事件
+      startY: 0, // 字母 A 的 offsetTop 距离，初始为 0
+      timer: null // 定时器，用于控制函数节流
     }
   },
   computed: {
@@ -32,6 +34,9 @@ export default {
       }
       return letters
     }
+  },
+  updated () {
+    this.startY = this.$refs['A'][0].offsetTop // 字母 A 的 offsetTop 距离
   },
   methods: {
     // 字母点击事件
@@ -45,13 +50,17 @@ export default {
     // 触摸移动事件
     handleTouchMove (e) {
       if (this.touchMove) {
-        const startY = this.$refs['A'][0].offsetTop // 字母 A 距离顶部的距离
-        const touchY = e.touches[0].clientY - 79 // 触摸移动的 Y 轴的距离
-        const index = Math.floor((touchY - startY) / 16) // 当前触摸到的字母索引
-
-        if (index >= 0 && index < this.letters.length) {
-          this.$emit('change', this.letters[index]) // 向父组件 city 传递数据，然后再由父组件将数据传递给兄弟组件 list
+        if (this.timer) { // 如果定时器已存在，就清除定时器
+          clearTimeout(this.timer)
         }
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY - 79 // 触摸移动的 Y 轴的距离
+          const index = Math.floor((touchY - this.startY) / 16) // 当前触摸到的字母索引
+
+          if (index >= 0 && index < this.letters.length) {
+            this.$emit('change', this.letters[index]) // 向父组件 city 传递数据，然后再由父组件将数据传递给兄弟组件 list
+          }
+        }, 16)
       }
     },
     // 触摸结束事件
