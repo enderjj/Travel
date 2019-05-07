@@ -3,15 +3,22 @@
   <div>
     <div class="title">热销榜单</div>
     <ul>
-      <li class="item after-border-1px" v-for="item of rlist" :key="item.id">
+      <!-- 直接用 router-link 标签代替 li 标签，通过设置 tag 参数将 router-link 变成 li 标签 -->
+      <router-link
+        tag="li"
+        class="item after-border-1px"
+        v-for="item of rlist"
+        :key="item.id"
+        :to="'/detail/' + item.id"
+      >
         <img class="item-img" :src="item.imgUrl">
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
           <p class="item-desc">{{item.desc}}</p>
           <!-- <input class="item-button" type="button" value="查看详情"> -->
-          <button class="item-button">查看详情</button>
+            <button class="item-button">查看详情</button>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
