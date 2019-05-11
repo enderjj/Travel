@@ -4,6 +4,7 @@
     <detail-banner></detail-banner>
     <detail-header></detail-header>
     <div class="content">
+      <detail-rating :routeId="routeId"></detail-rating>
       <detail-list :list="list"></detail-list>
     </div>
   </div>
@@ -13,13 +14,15 @@
 import detailBanner from './components/banner'
 import DetailHeader from './components/header'
 import DetailList from './components/list'
+import DetailRating from './components/rating'
 
 export default {
   name: 'Detail',
   components: {
     detailBanner,
     DetailHeader,
-    DetailList
+    DetailList,
+    DetailRating
   },
   data () {
     return {
@@ -49,8 +52,12 @@ export default {
         {
           title: '特惠票'
         }
-      ]
+      ],
+      routeId: ''
     }
+  },
+  activated () {
+    this.routeId = this.$route.params.id + '' // 保存当前动态路由参数
   }
 }
 </script>

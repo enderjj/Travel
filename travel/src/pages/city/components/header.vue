@@ -27,7 +27,7 @@ export default {
   font-size: .32rem
   color: #fff
   background: $bgcolor
-  .iconfont
+  .back-icon
     position: absolute
     top: 0
     left: 0
