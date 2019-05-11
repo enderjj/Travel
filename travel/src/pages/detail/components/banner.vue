@@ -13,23 +13,27 @@
         </div>
       </div>
     </div>
-    <!-- 初始不显示，后面再显示的话会存在问题，宽度计算不正确 -->
-    <common-gallary
-      :imags="gallaryImgs"
-      v-show="showGallary"
-      @click="handleGallaryClose"
-    >
-    </common-gallary>
+    <fade-animation>
+      <!-- 初始不显示，后面再显示的话会存在问题，宽度计算不正确 -->
+      <common-gallary
+        :imags="gallaryImgs"
+        v-show="showGallary"
+        @click="handleGallaryClose"
+      >
+      </common-gallary>
+    </fade-animation>
   </div>
 </template>
 
 <script>
 import CommonGallary from 'common/gallary/gallary'
+import FadeAnimation from 'common/fade/fadeAnimation' // 引入动画效果
 
 export default {
   name: 'DetailBanner',
   components: {
-    CommonGallary
+    CommonGallary,
+    FadeAnimation
   },
   props: {
     sightName: {
