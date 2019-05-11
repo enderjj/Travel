@@ -72,6 +72,9 @@ export default {
       this.$router.push('/') // 选择城市后跳转到首页，改变当前路由为首页路由
     },
     ...mapMutations(['changeCity'])
+  },
+  activated () {
+    this.scroll.scrollTo(0, 0, 0) // 进入页面时，让页面滚动到顶部位置
   }
 }
 </script>

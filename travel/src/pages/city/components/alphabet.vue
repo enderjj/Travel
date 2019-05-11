@@ -6,7 +6,7 @@
       :key="item"
       :ref="item"
       @click="handleLetterClick"
-      @touchstart="handleTouchStart"
+      @touchstart.prevent="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
     >{{item}}</li>
@@ -83,6 +83,7 @@ export default {
     right: 0
     bottom: 0
     width: .4rem
+    padding-left: .5rem
     .item
       line-height: .32rem
       font-size: .26rem

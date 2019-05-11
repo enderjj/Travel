@@ -10,6 +10,7 @@ import 'styles/iconfont.css' // 引入图标样式
 import fastClick from 'fastclick' // 解决移动端点击事件的 300 ms 延迟问题
 import VueAwesomeSwiper from 'vue-awesome-swiper' // 引入轮播图插件
 import 'swiper/dist/css/swiper.css' // 轮播图插件对应的样式
+import 'babel-polyfill'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body) // 启用 fastclick

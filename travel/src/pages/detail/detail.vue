@@ -65,7 +65,6 @@ export default {
   },
   activated () {
     this.routeId = this.$route.params.id + '' // 保存当前动态路由参数
-    console.log(this.lastId)
     // 如果两次加载的 id 不相等，则需要重新发送 ajax 请求
     if (this.lastId !== this.routeId) {
       this.lastId = this.routeId

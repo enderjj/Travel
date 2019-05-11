@@ -29,5 +29,9 @@ export default new Router({
       name: 'Rating', // 评论页
       component: Rating
     }
-  ]
+  ],
+  // 阻止多个页面滚动之间的相互影响，比如详情页滚动会影响首页，首页滚动会影响详情页
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
