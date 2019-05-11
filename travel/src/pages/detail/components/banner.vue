@@ -3,19 +3,19 @@
   <div>
     <div class="banner" @click="handleBannerClick">
       <div class="banner-img-wrapper">
-        <img class="banner-img" src="//img1.qunarzz.com/sight/p0/1904/a2/a23ae48aac0c0ab2a3.water.jpg_600x330_405288ba.jpg" alt="西溪国家湿地洪园">
+        <img class="banner-img" :src="bannerImg" :alt="sightName">
       </div>
       <div class="banner-info">
-        <p class="info-title">西溪国家湿地洪园</p>
+        <p class="info-title">{{sightName}}</p>
         <div class="info-number">
           <span class="iconfont info-icon">&#xe6dd;</span>
-          <span class="number">59</span>
+          <span class="number">{{this.gallaryImgs.length}}</span>
         </div>
       </div>
     </div>
     <!-- 初始不显示，后面再显示的话会存在问题，宽度计算不正确 -->
     <common-gallary
-      :imags="imags"
+      :imags="gallaryImgs"
       v-show="showGallary"
       @click="handleGallaryClose"
     >
@@ -31,13 +31,20 @@ export default {
   components: {
     CommonGallary
   },
+  props: {
+    sightName: {
+      type: String
+    },
+    bannerImg: {
+      type: String
+    },
+    gallaryImgs: {
+      type: Array
+    }
+  },
   data () {
     return {
-      showGallary: false,
-      imags: [
-        'http://img1.qunarzz.com/sight/p0/1904/a2/a23ae48aac0c0ab2a3.water.jpg_350x240_99142bd2.jpg',
-        'http://img1.qunarzz.com/sight/p0/1904/6d/6dd775aa7d985158a3.water.jpg_r_800x800_ba5cbbe0.jpg'
-      ]
+      showGallary: false
     }
   },
   methods: {
