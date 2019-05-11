@@ -12,9 +12,6 @@
           <span class="number">59</span>
         </div>
       </div>
-      <router-link class="banner-return" to="/">
-        <div class="iconfont back-icon">&#xe606;</div>
-      </router-link>
     </div>
     <!-- 初始不显示，后面再显示的话会存在问题，宽度计算不正确 -->
     <common-gallary
@@ -88,17 +85,4 @@ export default {
         .info-icon
           font-size: .24rem
           margin-right: .1rem
-    .banner-return
-      position: absolute
-      top: .1rem
-      left: .1rem
-      width: .72rem
-      height: .72rem
-      line-height: .72rem
-      color: #fff
-      text-align: center
-      background-color: rgba(0, 0, 0, 0.5)
-      border-radius: .5rem
-      .back-icon
-        font-size: .36rem
 </style>
